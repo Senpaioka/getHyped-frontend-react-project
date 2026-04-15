@@ -2,7 +2,7 @@
 
 A responsive single-page marketing website for **Get Hyped**. Built with React 19, Vite, Tailwind CSS v4, and GSAP for scroll-driven and interactive animations.
 
-* Preview Link: 
+* Preview Link: https://get-hyped-react.netlify.app/
 ---
 
 ## Tech Stack
