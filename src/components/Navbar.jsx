@@ -1,14 +1,43 @@
-import { Flame } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import gsap from 'gsap';
 import MenuButton from '../ui/MenuButton';
 
+const NAV_LINKS = ['Expertise', 'Work', 'About', 'Contact'];
+
 const GetHypedNavbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const overlayRef = useRef(null);
+
+  useEffect(() => {
+    const el = overlayRef.current;
+    if (!el) return;
+
+    if (menuOpen) {
+      gsap.set(el, { display: 'flex' });
+      gsap.fromTo(
+        el,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }
+      );
+    } else {
+      gsap.to(el, {
+        y: -20,
+        opacity: 0,
+        duration: 0.25,
+        ease: 'power3.in',
+        onComplete: () => gsap.set(el, { display: 'none' }),
+      });
+    }
+  }, [menuOpen]);
+
   return (
     <div className="bg-[#F9F5F0] text-[#1A1A1A] font-sans selection:bg-pink-200">
       {/* Navigation Header */}
       <header className="flex items-center justify-between px-8 py-6 max-w-350 mx-auto">
         
         {/* Logo */}
-        <div className="w-50 h-auto">
+        <div className="w-32 md:w-50 h-auto">
           <a href="#">
             <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 208 84" fill="none">
               <path d="M207.793 18.4091V68.8219C207.793 77.2049 200.998 84 192.615 84H7.46524C3.34207 84 0 80.6579 0 76.5348V37.5951C0 33.8732 2.69331 30.6933 6.36831 30.0829L186.384 0.251801C197.596 -1.60491 207.793 7.04266 207.793 18.4049" fill="#FAF4EC"></path>
@@ -27,10 +56,19 @@ const GetHypedNavbar = () => {
 
         
 
+        {/* Hamburger Toggle Button */}
+        <button
+          className="md:hidden p-2"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
         {/* Floating Nav Pill */}
         <nav className="hidden md:flex items-center bg-white rounded-2xl px-2 py-2 shadow-sm border border-gray-100">
-            {['Expertise', 'Work', 'About', 'Contact'].map((item) => (
-              <a className="button-swoosh px-6 py-2 font-semibold">
+            {NAV_LINKS.map((item) => (
+              <a key={item} className="button-swoosh px-6 py-2 font-semibold">
             <span>{item}</span>
           </a>
             ))}
@@ -39,6 +77,24 @@ const GetHypedNavbar = () => {
         {/* CTA Button */}
         <MenuButton></MenuButton>
       </header>
+
+      {/* Mobile Overlay Panel */}
+      <div
+        ref={overlayRef}
+        className="md:hidden flex-col items-start w-full bg-white border-t border-gray-100 shadow-md px-8 py-6 gap-4"
+        style={{ display: 'none' }}
+      >
+        {NAV_LINKS.map((item) => (
+          <a
+            key={item}
+            href="#"
+            className="text-lg font-semibold py-2 w-full"
+            onClick={() => setMenuOpen(false)}
+          >
+            {item}
+          </a>
+        ))}
+      </div>
     </div>
   );
 };

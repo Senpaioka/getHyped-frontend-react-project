@@ -2,7 +2,7 @@ import { ArrowRight, ArrowDown } from 'lucide-react';
 
 const ContentImpactSection = () => {
   return (
-    <section className="bg-[#F9F5F0] py-20 px-8 md:px-16 min-h-screen flex flex-col justify-center">
+    <section className="bg-[#F9F5F0] py-20 px-4 md:px-8 lg:px-16 min-h-screen flex flex-col justify-center">
       <div className="max-w-350 mx-auto w-full">
         
         {/* Large Headline */}

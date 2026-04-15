@@ -45,29 +45,31 @@ const WorkSection = () => {
     // Index 1: Moves up moderately
     // Index 2: Moves up significantly
 
-    // Card 2 (Index 1)
-    gsap.to(cards[1], {
-      y: -80, // Move up 60px
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top bottom", // Animation starts when section enters viewport
-        end: "bottom top",    // Ends when section leaves viewport
-        scrub: true,         // Ties animation to scroll progress
-      }
-    });
+    if (window.innerWidth >= 768) {
+      // Card 2 (Index 1)
+      gsap.to(cards[1], {
+        y: -80, // Move up 60px
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom", // Animation starts when section enters viewport
+          end: "bottom top",    // Ends when section leaves viewport
+          scrub: true,         // Ties animation to scroll progress
+        }
+      });
 
-    // Card 3 (Index 2)
-    gsap.to(cards[2], {
-      y: -160, // Move up 120px (double the 2nd card)
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      }
-    });
+      // Card 3 (Index 2)
+      gsap.to(cards[2], {
+        y: -160, // Move up 120px (double the 2nd card)
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
@@ -80,7 +82,7 @@ const WorkSection = () => {
         
         {/* Header */}
         <div className="mb-20">
-          <h2 className="text-7xl md:text-[9rem] font-bold tracking-tighter mb-8 leading-[0.85]">
+          <h2 className="text-[clamp(2.5rem,10vw,9rem)] font-bold tracking-tighter mb-8 leading-[0.85]">
             Content<br />dat scoort.
           </h2>
 
@@ -105,7 +107,7 @@ const WorkSection = () => {
             <div 
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className={`relative group rounded-[3.5rem] overflow-hidden border-8 ${project.borderColor} h-[550px] shadow-2xl transition-all duration-500 hover:-rotate-1`}
+              className={`relative group rounded-[3.5rem] overflow-hidden border-8 ${project.borderColor} h-[420px] md:h-[550px] shadow-2xl transition-all duration-500 hover:-rotate-1`}
               onMouseEnter={(e) => e.currentTarget.querySelector("video")?.play()}
               onMouseLeave={(e) => {
                 const video = e.currentTarget.querySelector("video");

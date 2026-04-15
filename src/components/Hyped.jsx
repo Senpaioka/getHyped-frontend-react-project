@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Mail, Flame } from 'lucide-react';
 import gsap from 'gsap';
 
@@ -84,20 +84,20 @@ const HypedSection = () => {
         {/* 🔥 Attached to Text as well */}
         <h2 
           onMouseEnter={handleMouseEnter}
-          className="text-6xl md:text-[10rem] font-bold tracking-tighter mb-16 leading-[0.85] cursor-default select-none"
+          className="text-[clamp(2rem,8vw,10rem)] font-bold tracking-tighter mb-16 leading-[0.85] cursor-default select-none"
         >
           Let's Get Hyped!
         </h2>
         
-        <div className="flex flex-wrap justify-center gap-6">
-          <button className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl py-3 pl-8 pr-3 hover:border-black transition-all group">
+        <div className="flex flex-col min-[480px]:flex-row justify-center gap-6">
+          <button className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl py-3 pl-8 pr-3 hover:border-black transition-all group min-h-[48px]">
             <span className="font-bold text-lg">Mail ons direct</span>
             <div className="bg-black text-white p-3 rounded-xl group-hover:scale-110 transition-transform">
               <Mail size={22} />
             </div>
           </button>
 
-          <button className="flex items-center gap-4 bg-[#FF5C2D] text-white rounded-2xl py-3 pl-8 pr-3 hover:brightness-110 transition-all group">
+          <button className="flex items-center gap-4 bg-[#FF5C2D] text-white rounded-2xl py-3 pl-8 pr-3 hover:brightness-110 transition-all group min-h-[48px]">
             <span className="font-bold text-lg">Get Results</span>
             <div className="bg-white text-[#FF5C2D] p-3 rounded-xl group-hover:scale-110 transition-transform">
               <Flame size={22} className="fill-current" />

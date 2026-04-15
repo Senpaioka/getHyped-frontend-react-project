@@ -14,7 +14,7 @@ const BrandTickerSection = () => {
   return (
     <section className="bg-[#F9F5F0] py-24 overflow-hidden">
       <div className="max-w-350 mx-auto px-8 mb-16">
-        <h2 className="text-6xl md:text-[100px] font-bold tracking-tighter leading-[0.9] text-[#1A1A1A]">
+        <h2 className="text-[clamp(2rem,8vw,6.25rem)] font-bold tracking-tighter leading-[0.9] text-[#1A1A1A]">
           These brands<br />got hyped.
         </h2>
       </div>
@@ -26,7 +26,7 @@ const BrandTickerSection = () => {
           {displayLogos.map((logo, index) => (
             <div 
               key={index}
-              className="w-64 h-64 md:w-80 md:h-80 shrink-0 bg-white/40 border border-gray-200/50 rounded-[2.5rem] flex flex-col items-center justify-center p-12 transition-all hover:bg-white hover:shadow-lg"
+              className="w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 shrink-0 bg-white/40 border border-gray-200/50 rounded-[2.5rem] flex flex-col items-center justify-center p-12 transition-all hover:bg-white hover:shadow-lg"
             >
               {/* Conditional rendering to mimic the different logo styles in the image */}
               {logo.isStamp ? (

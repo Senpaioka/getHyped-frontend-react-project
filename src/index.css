@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+  --footer-clip: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --footer-clip: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
 
 /* nav links */
 .button-swoosh {
