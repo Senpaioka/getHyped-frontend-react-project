@@ -74,8 +74,10 @@ const GetHypedNavbar = () => {
             ))}
         </nav>
 
-        {/* CTA Button */}
-        <MenuButton></MenuButton>
+        {/* CTA Button — hidden on mobile, shown in overlay instead */}
+        <div className="hidden md:block">
+          <MenuButton />
+        </div>
       </header>
 
       {/* Mobile Overlay Panel */}
@@ -94,6 +96,10 @@ const GetHypedNavbar = () => {
             {item}
           </a>
         ))}
+        {/* CTA Button inside mobile menu */}
+        <div className="pt-2 w-full">
+          <MenuButton />
+        </div>
       </div>
     </div>
   );
