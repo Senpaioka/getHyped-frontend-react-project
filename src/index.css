@@ -10,6 +10,12 @@
   }
 }
 
+html, body {
+  background-color: #EFE9E1; /* matches footer diagonal bg — no white bleed */
+  margin: 0;
+  padding: 0;
+}
+
 
 /* nav links */
 .button-swoosh {
